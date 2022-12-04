@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block kontenku %}
+
+  <h2 class="display-6">Manajemen Data Mahasiswa</h2>
+  <hr>
+  <a href="/mahasiswa/tambah" class="btn btn-dark mb-4 mt-2"> Tambah Mahasiswa</a>
+
+  <div class="row">
+   
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr class="bg-secondary text-white">
+            <td>ID</td>
+            <td>NIM</td>
+            <td>Nama Lengkap </td>
+            <td>Alamat</td>
+            <td>Aksi</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in mahasiswa %}
+          <tr>
+            <td>{{item.0}}</td> 
+            <td>{{item.1}}</td>
+            <td>{{item.2}}</td>
+            <td>{{item.3}}</td>
+            <td>
+              <a href="/mahasiswa/edit/{{item.0}}" class="btn btn-primary">Ubah</a>
+              <a href="/mahasiswa/delete/{{item.0}}" class="btn btn-danger btn-delete" onclick="confirm('Yakin???')">Hapus</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

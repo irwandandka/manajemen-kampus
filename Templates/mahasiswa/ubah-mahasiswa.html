@@ -1,0 +1,38 @@
+{% extends "layout.html" %} {% block kontenku %}
+
+<h2 class="display-6">Ubah Kontak</h2>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/mahasiswa">Data Mahasiswa</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Ubah Mahasiswa</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="col-md-8">
+        <div class="card card-body">
+            <form action="/mahasiswa/update/{{contact.0}}" method="POST">
+                <div class="mb-3">
+                    <label for="nim" class="form-label">NIM</label>
+                    <input type="text" name="nim" value="{{contact.1}}" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
+                    <input type="text" name="nama_lengkap" value="{{contact.2}}" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label for="alamat" class="form-label">Alamat</label>
+                    <input type="text" name="alamat" value="{{contact.3}}" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary btn-block">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %} {% block kontenku %}
+
+<h2 class="display-6">Tambah Kontak</h2>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/mahasiswa">Data Mahasiswa</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tambah mahasiswa</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="col-md-8">
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">{{ message }}</div>
+        {% endfor %} {% endif %} {% endwith %}
+
+        <div class="card card-body">
+            <form action="/mahasiswa/insert" method="POST">
+                <div class="mb-3">
+                    <label for="nim" class="form-label">Nomor Induk (NIM)</label>
+                    <input type="number" class="form-control" name="nim" placeholder="NIM" />
+                </div>
+                <div class="mb-3">
+                    <label for="nama_lengkap" class="form-label">Nama lengkap</label>
+                    <input type="text" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap" />
+                </div>
+                <div class="mb-3">
+                    <label for="alamat" class="form-label">Alamat</label>
+                    <input type="text" class="form-control" name="alamat" placeholder="Alamat" />
+                </div>
+                <button class="btn btn-primary btn-block">Tambah</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
