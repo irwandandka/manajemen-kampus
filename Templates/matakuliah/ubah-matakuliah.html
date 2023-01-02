@@ -1,0 +1,50 @@
+{% extends "main-layout.html" %}
+{% block content %}
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Edit Mata Kuliah</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %} {% endif %} {% endwith %}
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Mata Kuliah</h6>
+    </div>
+    <div class="card-body">
+        <div class="card card-body">
+            <form action="/mata-kuliah/update/{{matakuliah.0}}" method="POST">
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Nama</label>
+                    <input type="text" class="form-control" name="nama" value="{{ matakuliah.1 }}" placeholder="Nama Mata Kuliah" />
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="jumlah_sks" class="form-label">Jumlah SKS</label>
+                            <input type="text" class="form-control" name="jumlah_sks" value="{{ matakuliah.2 }}" placeholder="Jumlah SKS" />
+                        </div>
+                        <div class="col-6">
+                            <label for="semester" class="form-label">Semester</label>
+                            <input type="text" class="form-control" name="semester" value="{{ matakuliah.3 }}" placeholder="Semester" />
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="dosen_id" class="form-label">Dosen</label>
+                    <select name="dosen_id" class="form-control" id="dosen_id">
+                        <option value="">Pilih Dosen</option>
+                        {% for data in dosen %}
+                        <option {% if data.0 == matakuliah.4 %} selected {% endif %} value="{{ data.0 }}">{{ data.1 }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
