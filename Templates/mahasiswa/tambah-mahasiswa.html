@@ -1,37 +1,72 @@
-{% extends "layout.html" %} {% block kontenku %}
+{% extends "main-layout.html" %}
+{% block content %}
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Tambah Mahasiswa</h1>
 
-<h2 class="display-6">Tambah Kontak</h2>
-<hr />
-<div class="row justify-content-center">
-    <div class="col-md-12">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/mahasiswa">Data Mahasiswa</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Tambah mahasiswa</li>
-            </ol>
-        </nav>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %} {% endif %} {% endwith %}
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Mahasiswa</h6>
     </div>
-
-    <div class="col-md-8">
-        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">{{ message }}</div>
-        {% endfor %} {% endif %} {% endwith %}
-
+    <div class="card-body">
         <div class="card card-body">
             <form action="/mahasiswa/insert" method="POST">
-                <div class="mb-3">
-                    <label for="nim" class="form-label">Nomor Induk (NIM)</label>
-                    <input type="number" class="form-control" name="nim" placeholder="NIM" />
-                </div>
                 <div class="mb-3">
                     <label for="nama_lengkap" class="form-label">Nama lengkap</label>
                     <input type="text" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap" />
                 </div>
                 <div class="mb-3">
+                    <label for="nim" class="form-label">Nomor Induk (NIM)</label>
+                    <input type="number" class="form-control" name="nim" placeholder="NIM" />
+                </div>
+                <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>
                     <input type="text" class="form-control" name="alamat" placeholder="Alamat" />
                 </div>
-                <button class="btn btn-primary btn-block">Tambah</button>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="Tanggal Lahir" class="form-label">Tanggal Lahir</label>
+                            <input type="date" class="form-control" name="tanggal_lahir" />
+                        </div>
+                        <div class="col-6">
+                            <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                            <select name="jenis_kelamin" class="form-control" id="jenis_kelamin">
+                                <option value="">Pilih Jenis Kelamin</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="jurusan_id" class="form-label">Jurusan</label>
+                            <select name="jurusan_id" class="form-control" id="jurusan_id">
+                                <option value="">Pilih Jurusan</option>
+                                {% for data in jurusan %}
+                                <option value="{{ data.0 }}">{{ data.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="kelas_id" class="form-label">Kelas</label>
+                            <select name="kelas_id" class="form-control" id="kelas_id">
+                                <option value="">Pilih Kelas</option>
+                                {% for data in kelas %}
+                                <option value="{{ data.0 }}">{{ data.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary">Tambah</button>
             </form>
         </div>
     </div>
