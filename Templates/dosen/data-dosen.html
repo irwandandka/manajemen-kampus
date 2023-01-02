@@ -1,0 +1,52 @@
+{% extends "main-layout.html" %}
+{% block content %}
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Dosen</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %} {% endif %} {% endwith %}
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Dosen</h6>
+    </div>
+    <div class="card-body">
+        <div class="mb-3">
+            <a href="/dosen/tambah" class="btn btn-primary rounded shadow">Tambah Dosen</a>
+        </div>
+        <div class="table-responsive text-center">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nama</th>
+                        <th>Alamat</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in dosen %}
+                    <tr>
+                        <td>{{ data.0 }}</td>
+                        <td>{{ data.1 }}</td>
+                        <td>{{ data.2 }}</td>
+                        <td>{{ data.3 }}</td>
+                        <td>{{ data.4 }}</td>
+                        <td>
+                            <a href="/dosen/edit/{{data.0}}" class="btn btn-primary">Ubah</a>
+                            <a href="/dosen/delete/{{data.0}}" class="btn btn-danger btn-delete" onclick="confirm('Yakin???')">Hapus</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
