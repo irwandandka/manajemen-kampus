@@ -1,16 +1,97 @@
-{% extends "layout.html" %}
-{% block kontenku %}
+{% extends "main-layout.html" %}
+{% block content %}
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+</div>
 
-  <h2 class="display-6">Selamat datang di SIM!</h2>
-  <hr>
+<div class="row">
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                          Mahasiswa</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ mahasiswa }}</div>
+                  </div>
+                  <div class="col-auto">
+                      <i class="fas fa-users fa-2x text-gray-500"></i>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 
-  <header><img src="{{ url_for('static', filename='images/header.jpg')}}" width="100%" alt="Header Kontak" /></header>
+  <!-- Earnings (Annual) Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-success shadow h-100 py-2">
+          <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                          Mata Kuliah</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ matakuliah }}</div>
+                  </div>
+                  <div class="col-auto">
+                      <i class="fas fa-book fa-2x text-gray-500"></i>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 
-  <div class="row">
-    <div class="col-md-12">   
-        <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis reiciendis in libero voluptatibus animi quam omnis at dolores corrupti. Minima nobis error ipsum commodi harum voluptatum, quis adipisci sunt ducimus, consequuntur illum. Officia nihil nobis labore aliquam, omnis sequi inventore asperiores? Saepe, esse quas cumque eos perspiciatis eligendi. Aperiam, accusantium?
-        </p>
+  <!-- Tasks Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-info shadow h-100 py-2">
+          <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jurusan
+                      </div>
+                      <div class="row no-gutters align-items-center">
+                          <div class="col-auto mr-2">
+                              <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ jurusan }}</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-auto">
+                      <i class="fas fa-graduation-cap fa-2x text-gray-500"></i>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Pending Requests Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-warning shadow h-100 py-2">
+          <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                          Kelas</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ kelas }}</div>
+                  </div>
+                  <div class="col-auto">
+                      <i class="fas fa-landmark fa-2x text-gray-500"></i>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="row mx-1">
+  <div class="col-12">
+    <div class="card shadow mb-4">
+      <div class="card-header text-center py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Welcome!</h6>
+      </div>
+      <div class="card-body">
+          Selamat Datang Di Aplikasi Manajemen Kampus!
+      </div>
     </div>
   </div>
 </div>
